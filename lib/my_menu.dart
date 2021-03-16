@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nav_test/help_screen.dart';
 import 'package:nav_test/home_screen.dart';
+import 'package:nav_test/main.dart';
 import 'package:nav_test/tasks_detail_screen.dart';
 import 'package:nav_test/tasks_screen.dart';
 
@@ -36,18 +37,17 @@ class MyMenu extends StatelessWidget {
 }
 
 Widget _menuItem(
-    {@required BuildContext context,
-    @required String title,
-    @required String route,
-    @required List<String> routes}) {
-  final current = routes.contains(ModalRoute.of(context).settings.name);
+    {required BuildContext context,
+    required String title,
+    required String route,
+    required List<String> routes}) {
+  final current = routes.contains(ModalRoute.of(context)?.settings.name);
   return Container(
     color: (current) ? Colors.white.withOpacity(0.1) : Colors.transparent,
     child: ListTile(
       onTap: () {
         if (!current) {
-          Navigator.pushReplacementNamed(
-            context,
+          navigatorKey.currentState!.pushReplacementNamed(
             route,
           );
         }
