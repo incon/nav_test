@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:nav_test/help_screen.dart';
 import 'package:nav_test/home_screen.dart';
 import 'package:nav_test/main.dart';
-import 'package:nav_test/tasks_detail_screen.dart';
 import 'package:nav_test/tasks_screen.dart';
 
-class MyMenu extends StatelessWidget {
+class MyMenu extends StatefulWidget {
+  @override
+  _MyMenuState createState() => _MyMenuState();
+}
+
+class _MyMenuState extends State<MyMenu> {
+  String currentRoute = '/';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,46 +22,49 @@ class MyMenu extends StatelessWidget {
             context: context,
             title: 'Home',
             route: HomeScreen.route,
-            routes: [HomeScreen.route],
           ),
           _menuItem(
             context: context,
             title: 'Tasks',
             route: TasksScreen.route,
-            routes: [TasksScreen.route, TasksDetailScreen.route],
           ),
           _menuItem(
             context: context,
             title: 'Help',
             route: HelpScreen.route,
-            routes: [HelpScreen.route],
           ),
         ],
       ),
     );
   }
-}
 
-Widget _menuItem(
-    {required BuildContext context,
+  Widget _menuItem({
+    required BuildContext context,
     required String title,
     required String route,
-    required List<String> routes}) {
-  final current = routes.contains(ModalRoute.of(context)?.settings.name);
-  return Container(
-    color: (current) ? Colors.white.withOpacity(0.1) : Colors.transparent,
-    child: ListTile(
-      onTap: () {
-        if (!current) {
-          navigatorKey.currentState!.pushReplacementNamed(
-            route,
-          );
-        }
-      },
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.white),
+  }) {
+    final current = route == currentRoute;
+    return Container(
+      color: (current) ? Colors.white.withOpacity(0.1) : Colors.transparent,
+      child: ListTile(
+        onTap: () {
+          if (!current) {
+            setState(() {
+              currentRoute = route;
+            });
+            while (navigatorKey.currentState!.canPop()) {
+              navigatorKey.currentState!.pop();
+            }
+            navigatorKey.currentState!.pushReplacementNamed(
+              route,
+            );
+          }
+        },
+        title: Text(
+          title,
+          style: TextStyle(color: Colors.white),
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
