@@ -18,7 +18,7 @@ class MyScaffold extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      drawer: MediaQuery.of(context).size.width < 1000
+      drawer: MediaQuery.of(context).size.width < 1000 && drawer
           ? Drawer(
               child: MyMenu(),
             )

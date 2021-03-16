@@ -25,9 +25,10 @@ class MyApp extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    width: 300.0,
-                  ),
+                  if (mediaQuery.size.width >= 1000)
+                    Container(
+                      width: 300.0,
+                    ),
                   Expanded(
                     child: Container(
                       width: 300.0,
