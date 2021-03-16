@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nav_test/help_screen.dart';
 import 'package:nav_test/home_screen.dart';
-import 'package:nav_test/main.dart';
+import 'package:nav_test/my_app.dart';
 import 'package:nav_test/tasks_screen.dart';
 
 class MyMenu extends StatefulWidget {
@@ -38,11 +38,10 @@ class _MyMenuState extends State<MyMenu> {
     );
   }
 
-  Widget _menuItem({
-    required BuildContext context,
-    required String title,
-    required String route,
-  }) {
+  Widget _menuItem(
+      {required BuildContext context,
+      required String title,
+      required String route}) {
     final current = route == currentRoute;
     return Container(
       color: (current) ? Colors.white.withOpacity(0.1) : Colors.transparent,
@@ -52,10 +51,10 @@ class _MyMenuState extends State<MyMenu> {
             setState(() {
               currentRoute = route;
             });
-            while (navigatorKey.currentState!.canPop()) {
-              navigatorKey.currentState!.pop();
+            while (MyApp.navigatorKey.currentState!.canPop()) {
+              MyApp.navigatorKey.currentState!.pop();
             }
-            navigatorKey.currentState!.pushReplacementNamed(
+            MyApp.navigatorKey.currentState!.pushReplacementNamed(
               route,
             );
           }
