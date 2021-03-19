@@ -10,8 +10,9 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-        title: 'Taskes',
-        body: ElevatedButton(
+      title: 'text',
+      body: Center(
+        child: ElevatedButton(
           onPressed: () {
             Navigator.pushNamed(
               context,
@@ -19,6 +20,8 @@ class TasksScreen extends StatelessWidget {
             );
           },
           child: Text('Detail'),
-        ));
+        ),
+      ),
+    );
   }
 }

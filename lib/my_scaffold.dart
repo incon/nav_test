@@ -7,8 +7,8 @@ class MyScaffold extends StatelessWidget {
   final bool drawer;
 
   const MyScaffold({
-    required this.title,
-    required this.body,
+    @required this.title,
+    @required this.body,
     this.drawer = true,
   });
 

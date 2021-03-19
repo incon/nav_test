@@ -8,6 +8,9 @@ class HelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyScaffold(title: 'Help', body: Text('Help'));
+    return MyScaffold(
+      title: 'help',
+      body: Text('Help'),
+    );
   }
 }

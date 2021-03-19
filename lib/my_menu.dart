@@ -39,9 +39,9 @@ class _MyMenuState extends State<MyMenu> {
   }
 
   Widget _menuItem(
-      {required BuildContext context,
-      required String title,
-      required String route}) {
+      {@required BuildContext context,
+      @required String title,
+      @required String route}) {
     final current = route == currentRoute;
     return Container(
       color: (current) ? Colors.white.withOpacity(0.1) : Colors.transparent,
@@ -51,10 +51,10 @@ class _MyMenuState extends State<MyMenu> {
             setState(() {
               currentRoute = route;
             });
-            while (MyApp.navigatorKey.currentState!.canPop()) {
-              MyApp.navigatorKey.currentState!.pop();
+            while (MyApp.navigatorKey.currentState.canPop()) {
+              MyApp.navigatorKey.currentState.pop();
             }
-            MyApp.navigatorKey.currentState!.pushReplacementNamed(
+            MyApp.navigatorKey.currentState.pushReplacementNamed(
               route,
             );
           }

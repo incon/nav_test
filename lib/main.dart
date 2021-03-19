@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nav_test/my_app.dart';
+import 'my_app.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      const MaterialApp(
+        home: const MyApp(),
+      ),
+    );

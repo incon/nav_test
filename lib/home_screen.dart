@@ -8,6 +8,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyScaffold(title: 'Home', body: Text('home'));
+    return MyScaffold(
+      title: 'home',
+      body: Text('home'),
+    );
   }
 }
